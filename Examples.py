@@ -6,6 +6,7 @@
 # Some example code and objects.
 #
 
+from functools import WRAPPER_ASSIGNMENTS
 from TilesetOrganism import TileGene, GlueGene, TilesetOrganism
 from Tile import Tile
 from Tools import Direction
@@ -17,12 +18,12 @@ from Tools import Direction
 #
 
 
-def simplePattern():
-    org = TilesetOrganism()
-
-    with open("organisms/simple") as f:
+def simplePatternOrg():
+    # read data from the file
+    with open("organisms/simpleOrganism", "r") as f:
         lines = f.readlines()
 
+    org = TilesetOrganism()
     for l in lines:
         tokens = l.split()
 
@@ -47,18 +48,32 @@ def simplePattern():
 
 
 def simplePatternSeed():
+    # read data from the file
+    with open("organisms/simpleSeed", "r") as f:
+        lines = f.readlines()
+
+    westGlues = lines[0].split()
+    southGlues = lines[1].split()
+
+    print(westGlues)
+    print(southGlues)
+
     seed = []
-    seed.append([])
-    seed.append([])
-    seed.append([])
+
+    # add all the rows
+    for i in range(len(westGlues) + 1):
+        seed.append([])
 
     # fill left column
-    seed[0].append(Tile(0, 'w', {Direction.EAST: 1}))
-    seed[1].append(Tile(0, 'w', {Direction.EAST: 1}))
-    seed[2].append(Tile(0, 'w', {}))
+    for i in range(len(westGlues)):
+        seed[i].append(Tile(0, 'w', {Direction.EAST: int(westGlues[i])}))
+
+    # fill corner tile
+    seed[len(westGlues)].append(Tile(0, 'w', {}))
 
     # fill bottom row
-    seed[2].append(Tile(0, 'w', {Direction.NORTH: 2}))
-    seed[2].append(Tile(0, 'w', {Direction.NORTH: 2}))
+    for i in range(len(southGlues)):
+        seed[len(southGlues)].append(Tile(0, 'w',
+                                          {Direction.NORTH: int(southGlues[i])}))
 
     return seed

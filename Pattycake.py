@@ -7,13 +7,13 @@
 #
 
 from Assembly import Assembly
-from Examples import simplePattern
+from Examples import simplePatternOrg
 from rich import print
 
 print("Genome Testing")
 print()
 
-org = simplePattern()
+org = simplePatternOrg()
 print(org)
 
 tileset = org.tileset()
