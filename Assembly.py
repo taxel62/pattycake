@@ -15,9 +15,8 @@ console = Console()
 
 
 class Assembly:
-    def __init__(self, tileset, size) -> None:
+    def __init__(self, tileset) -> None:
         self.tileset = tileset
-        self.size = size
 
         # to store the assembly
         self.tiles = []
@@ -58,7 +57,7 @@ class Assembly:
             for t in row:
                 if t.symbol == 0:
                     console.print(" S ", end="", style="#ffffff on #555555")
-                elif t.color == "black":
+                elif t.color == "b":
                     console.print("   ", end="", style="#ffffff on #000000")
                 else:
                     console.print("   ", end="", style="#000000 on #bbbbbb")

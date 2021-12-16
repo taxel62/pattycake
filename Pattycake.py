@@ -17,7 +17,7 @@ org = simplePattern()
 print(org)
 
 tileset = org.tileset()
-assembly = Assembly(tileset, 2)
+assembly = Assembly(tileset)
 assembly.assemble(True)
 
 print("final assembly")
