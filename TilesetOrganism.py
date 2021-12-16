@@ -1,19 +1,15 @@
 #
 # TilesetOrganism
 #
-# December 15th, 2021
+# December 16th, 2021
 #
 # Class definitions for a genotype representing a tileset.
 #
 
-from enum import Enum
+from Tile import Tile
 
-
-class Direction(Enum):
-    NORTH = 1
-    EAST = 2
-    SOUTH = 3
-    WEST = 4
+# typedef
+Tileset = set[Tile]
 
 
 class TileGene:
@@ -55,5 +51,26 @@ class TilesetOrganism:
         res += "\n\n"
         res += "GlueGenes\n" + " \n".join(ggStrings)
         res += "\n"
+
+        return res
+
+    def tileset(self) -> Tileset:
+        res: set
+        res = set()
+
+        tg: TileGene
+        for tg in self.tileGenes:
+            # get all data for a tile object
+            symbol = tg.symbol
+            color = tg.color
+            glues = {}
+
+            gg: GlueGene
+            for gg in self.glueGenes:
+                if gg.symbol == symbol:
+                    glues[gg.direction] = gg.glue
+
+            # create a tile, add it to res
+            res.add(Tile(symbol, color, glues))
 
         return res
