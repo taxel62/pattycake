@@ -20,8 +20,14 @@
 
 ## Resources
 - [NEAT paper](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)
+- [NEAT Summary](https://towardsdatascience.com/neat-an-awesome-approach-to-neuroevolution-3eca5cc7930f)
 - [Evolutionary Cellular Automata](https://arxiv.org/pdf/1508.05752.pdf)
 - [Neural Cellular Automata](https://distill.pub/2020/growing-ca/)
+- [Neural Patterns IO](https://neuralpatterns.io/)
+- [David Ditman](https://github.com/davidcdittman/Hardest-k-PATS-Patterns)
+- [Pytorch NEAT](https://github.com/uber-research/PyTorch-NEAT)
+- [Tensorflow NEAT](https://github.com/crisbodnar/TensorFlow-NEAT)
+- [NEAT Python](https://github.com/CodeReclaimers/neat-python)
 
 ## Optimizations
 - Assembly currently looks through the tileset, but since we want deterministic tilesets, the South and West glues of each location in the assembly must be unique. 
